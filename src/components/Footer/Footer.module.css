@@ -1,0 +1,122 @@
+.footerContainer {
+  background: var(--color-secondary);
+  width: 100vw;
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  min-height: 424px;
+  justify-content: space-between;
+  padding: var(--padding-base);
+  font-size: 16px;
+  font-weight: 400;
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.footerGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* min-height: 424px; */
+  /* border: 2px solid white; */
+}
+
+.logoAndIcons {
+  /* border: 1px solid yellow; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.iconContainer {
+  display: flex;
+  gap: 10px;
+}
+.iconContainer .icon {
+  width: 35px;
+  height: 35px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* -----------Now below is styling of lists--------------- */
+
+.links {
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.links ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.links li {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.arrow {
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+/* --------------bELOW IS RESPONSIVE DESIGN----------------------- */
+
+/* NOte -- For max width keep higher px above */
+
+/* ======================= */
+/* 📱 Responsive Styling */
+/* ======================= */
+
+/* @media (max-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: repeat(1, 1fr); 
+  }
+}
+
+@media (max-width: 600px) {
+} */
+@media (max-width: 768px) {
+  .footerGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .logoAndIcons {
+    align-items: center;
+    text-align: center;
+  }
+
+  .iconContainer {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .links {
+    justify-content: center;
+  }
+
+  .links ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 25px;
+  }
+
+  .links li {
+    width: fit-content;
+    white-space: nowrap;
+  }
+}
