@@ -4,13 +4,17 @@
   color: var(--color-white);
   display: flex;
   flex-direction: column;
-  min-height: 424px;
+  /* min-height: 424px; */
+  height: auto;
   justify-content: space-between;
   padding: var(--padding-base);
   font-size: 16px;
   font-weight: 400;
   padding-bottom: 40px;
   padding-top: 40px;
+
+  text-align: start;
+  gap: 100px;
 }
 
 .footerGrid {
@@ -42,6 +46,10 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.copyright {
+  font-size: 16px;
 }
 
 /* -----------Now below is styling of lists--------------- */

@@ -1,12 +1,13 @@
 import React from "react";
-import Logo from "../../components/Logo/Logo";
 import Footer from "../../components/Footer/Footer";
+import Download from "../../components/Download/Download";
 
 const Home = () => {
   return (
     <>
-      {/* <Logo></Logo> */}
       {/* <div>Home</div> */}
+
+      <Download></Download>
       <Footer></Footer>
     </>
   );

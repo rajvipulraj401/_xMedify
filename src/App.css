@@ -2,14 +2,18 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* outline: 1px solid red; */
 }
 
-/* --------------Delete below css----------------- */
+/* In order to remove vertical scroll bar */
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
 .AppContainer {
-  width: 100vw;
+  width: 100%;
+  /* Give width 100% always else overflow will occur */
   height: auto;
-
   font-family: var(--font-primary);
 }
 
@@ -30,6 +34,13 @@
 
   --font-primary: "Poppins", sans-serif;
   --padding-base: 0px 80px;
+  --btn-radius: 8px;
+
+  --bg-gradient2: linear-gradient(
+    81deg,
+    #e7f0ff 9.01%,
+    rgba(232, 241, 255, 0.47) 89.11%
+  );
 }
 /* .button {
   background-color: var(--color-primary);

@@ -103,14 +103,13 @@
 // export default Footer;
 
 // -------------Footer links using array FOLLOWING dry principle----------------
-
 import React from "react";
 import styles from "./Footer.module.css";
 import Logo from "../Logo/Logo";
 import { FaFacebookF, FaTwitter, FaYoutube, FaPinterest } from "react-icons/fa";
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-// ✅ Footer links as array of arrays
+//  Footer links as array of arrays
 const footerLinks = [
   ["About Us", "Our Pricing", "Our Gallery", "Appointment", "Privacy Policy"],
   ["Orthology", "Neurology", "Dental Care", "Opthalmology", "Cardiology"],
@@ -119,10 +118,10 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <div className={styles.footerContainer}>
+    <footer className={styles.footerContainer}>
       <div className={styles.footerGrid}>
         {/* Logo + Social Icons */}
-        <div className={styles.logoAndIcons}>
+        <section className={styles.logoAndIcons}>
           <Logo />
           <div className={styles.iconContainer}>
             <div className={styles.icon}>
@@ -138,11 +137,11 @@ const Footer = () => {
               <FaPinterest />
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Links with arrow icons */}
         {footerLinks.map((group, idx) => (
-          <div className={styles.links} key={idx}>
+          <nav className={styles.links} key={idx}>
             <ul>
               {group.map((item, i) => (
                 <li key={i}>
@@ -150,15 +149,15 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
         ))}
       </div>
 
       {/* Copyright */}
-      <div className={styles.copyright}>
-        Copyright ©2023 Surya Nursing Home.com. All Rights Reserved
-      </div>
-    </div>
+      <small className={styles.copyright}>
+        Copyright ©2025 Surya Nursing Home.com. All Rights Reserved
+      </small>
+    </footer>
   );
 };
 
