@@ -71,3 +71,64 @@ header p {
   justify-content: space-between;
   gap: 40px;
 }
+
+/* ----------REsponsive designn------------------ */
+
+@media (max-width: 768px) {
+  .phoneForm {
+    /* flex-direction: column; */
+    gap: 10px;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .inputWrapper input {
+    width: 100%;
+    font-size: 0.9rem;
+    padding: 0.6rem;
+  }
+
+  .downloadButtonContainer {
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  header {
+    font-size: 22px;
+  }
+
+  header p {
+    font-size: 14px;
+  }
+
+  .downloadContainer {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inputWrapper input {
+    font-size: 0.8rem;
+    padding: 0.5rem;
+  }
+
+  .countryCode {
+    font-size: 0.9rem;
+  }
+  .downloadButtonContainer {
+    gap: 8px;
+    width: 100%;
+  }
+
+  .iconDownload,
+  .iconDownload2 {
+    font-size: 18px;
+  }
+
+  header h2 {
+    font-size: 20px;
+  }
+}
