@@ -1,7 +1,7 @@
 .heroContainer {
   width: 100%;
   height: auto;
-  min-height: 780px;
+  min-height: 700px;
   background: var(--bg-gradient2);
   display: flex;
   justify-content: center;
@@ -70,4 +70,52 @@
 
 .docImg {
   width: 95%;
+}
+
+/* ----Responsive design for Hero ---------- */
+
+@media screen and (max-width: 768px) {
+  .topSection {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .leftSection {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .rightSection {
+    justify-content: center;
+  }
+
+  .docImg {
+    width: 80%;
+    max-width: 300px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .docImg {
+    width: 100%;
+    max-width: 250px;
+  }
 }

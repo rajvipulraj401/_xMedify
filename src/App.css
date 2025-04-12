@@ -35,6 +35,7 @@ body::-webkit-scrollbar {
   --font-primary: "Poppins", sans-serif;
   --padding-base: 0px 80px;
   --btn-radius: 8px;
+  --card-gradient: linear-gradient(144.2deg, #e1f3ff 0%, #2aa7ff 100%);
 
   --bg-gradient2: linear-gradient(
     81deg,

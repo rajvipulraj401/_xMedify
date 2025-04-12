@@ -1,7 +1,11 @@
 import React from "react";
 
 const FindDoctor = () => {
-  return <div>FindDoctor</div>;
+  return (
+    <>
+      <div>FindDoctor</div>
+    </>
+  );
 };
 
 export default FindDoctor;

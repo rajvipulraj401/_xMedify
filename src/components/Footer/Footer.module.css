@@ -100,17 +100,27 @@
     gap: 50px;
     font-size: 14px;
   }
+
+  .iconContainer {
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconContainer .icon {
+    width: 50px;
+    height: 18px;
+    padding: 10px 5px;
+  }
 }
 
 @media (max-width: 600px) {
   .footerContainer {
-    padding: 10px 5px;
+    padding: 30px 5px;
     min-height: auto;
   }
 
   .footerGrid {
     grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: 1fr 1fr; */
     gap: 5px;
     justify-content: start;
   }
@@ -121,7 +131,19 @@
 
     grid-column: 1/4;
     margin-bottom: 20px;
-    /* Make it span full row  */
+  }
+
+  .iconContainer {
+    width: 50px;
+    height: 50px;
+  }
+
+  .iconContainer .icon {
+    width: 50px;
+    height: 18px;
+    padding: 10px 5px;
+    position: relative;
+    right: 100px;
   }
 
   .links {
