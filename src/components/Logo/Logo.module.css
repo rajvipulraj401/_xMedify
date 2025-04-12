@@ -4,10 +4,13 @@
   display: flex;
   gap: 10px;
   cursor: pointer;
+  align-items: center;
 }
 
 .logo span {
   color: var(--color-primary);
+
+  font-size: 18px;
 }
 
 .safetyIconBox {
