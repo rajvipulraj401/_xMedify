@@ -1,0 +1,129 @@
+.card {
+  display: flex;
+  width: 700px;
+  align-items: flex-start;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* ---------- Left Section (Image + Tick + Rating) ---------- */
+.leftSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+.imageWrapper {
+  width: 100px;
+  height: 100px;
+  background-color: #d6efff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hospitalImg {
+  width: 60px;
+  height: auto;
+}
+
+.tick {
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  background-color: #ffffff;
+  color: green;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+  margin-top: 10px;
+  background-color: #27ae60;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ---------- Middle Section (Text Info) ---------- */
+.middleSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 200px;
+}
+
+.title {
+  font-size: 18px;
+  color: var(--color-primary);
+  margin-bottom: 5px;
+}
+
+.location,
+.description {
+  font-size: 14px;
+  color: var(--color-secondary);
+  margin: 3px 0;
+}
+
+.fee {
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.free {
+  color: green;
+  font-weight: bold;
+}
+
+.strike {
+  text-decoration: line-through;
+  color: #aaa;
+  margin-left: 4px;
+}
+
+/* ---------- Right Section (Availability + Button) ---------- */
+.rightSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 200px;
+}
+
+.available {
+  color: green;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .rightSection {
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .rightSection button {
+    width: 100%;
+  }
+}

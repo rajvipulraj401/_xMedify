@@ -3,7 +3,7 @@ import styles from "./Navbar.module.css";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
 
-const Navbar = ({ background }) => {
+const Navbar = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.topStrip}>
@@ -11,7 +11,7 @@ const Navbar = ({ background }) => {
         will always be our priority, so we follow the best practices for
         cleanliness.
       </div>
-      <nav className={styles.navbar} style={{ background }}>
+      <nav className={styles.navbar}>
         <Logo></Logo>
         <ul className={styles.navLinks}>
           <li>Find Doctors</li>
