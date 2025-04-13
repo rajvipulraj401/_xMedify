@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 const BookingCard = () => {
   return (
     <div className={styles.card}>
-      {/* Left: Image + Rating */}
+      {/* Left: Image */}
       <div className={styles.leftSection}>
         <div className={styles.imageWrapper}>
           <img
@@ -15,9 +15,6 @@ const BookingCard = () => {
             className={styles.hospitalImg}
           />
           <span className={styles.tick}>✔</span>
-        </div>
-        <div className={styles.rating}>
-          👍 <span>5</span>
         </div>
       </div>
 
@@ -35,13 +32,16 @@ const BookingCard = () => {
           <span className={styles.strike}> ₹500</span> Consultation fee at
           clinic
         </p>
+        <div className={styles.rating}>
+          👍 <span>5</span>
+        </div>
       </div>
 
       {/* Right: Availability + Button */}
       <div className={styles.rightSection}>
         <p className={styles.available}>Available Today</p>
         <Button
-          width="180px"
+          width="250px"
           height="45px"
           background="var(--color-primary)"
           aria-label="Book Center"

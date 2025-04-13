@@ -20,10 +20,6 @@ const App = () => {
       <Faq></Faq>
       <Download></Download>
       <Footer></Footer>
-      {/* <AdCard></AdCard> */}
-      <BookingCard></BookingCard>
-      <BookingCard></BookingCard>
-      <BookingCard></BookingCard>
     </div>
   );
 };

@@ -6,13 +6,14 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
   color: var(--color-secondary);
   width: 100%;
-  max-width: 400px;
+  /* max-width: 400px; */
+  height: 220px;
 }
 
 .adCard h2 {
   font-size: 22px;
   font-weight: bold;
-  line-height: 1.5;
+  /* line-height: 1.2; */
 }
 
 .blue {
@@ -41,7 +42,7 @@
 }
 
 .note {
-  font-size: 12px;
+  font-size: 10px;
   color: gray;
   margin-top: 10px;
 }

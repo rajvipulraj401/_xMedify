@@ -1,6 +1,49 @@
+/* .navLink {
+  all: unset;
+  text-decoration: none;
+}
+
+.activeLink {
+  border-bottom: 2px solid var(--color-primary);
+} */
+
+/* Default nav-link styling */
+.navLink {
+  all: unset;
+  position: relative;
+}
+
+/* Active state for NavLink */
+.activeLink {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* The underline effect using a pseudo-element */
+.navLink::after {
+  content: ""; /* Create an empty pseudo-element */
+  position: absolute;
+  bottom: -210%; /* Position it at the bottom of the link */
+  left: 0;
+  width: 100%; /* Underline will be the width of the <li> */
+  height: 2px; /* Height of the underline */
+  background-color: var(--color-primary); /* Color of the underline */
+  transform: scaleX(0);
+  /* Initially hide the underline */
+  transform-origin: bottom right;
+  /* Animate from right to left */
+  transition: transform 0.3s ease;
+  /* Add animation for smooth transition */
+}
+
+/* When the link is active, show the underline */
+.navLink.activeLink::after {
+  transform: scaleX(1); /* Reveal the underline when active */
+  transform-origin: bottom left; /* Animate from left to right */
+}
+
 .wrapper {
   width: 100%;
-  font-family: var(--font-primary);
 }
 
 .topStrip {
@@ -9,7 +52,6 @@
   padding: 0.6rem 1rem;
   font-size: 0.9rem;
   text-align: center;
-  font-weight: 400;
 }
 
 .navbar {
@@ -31,18 +73,20 @@
   align-items: center;
   gap: 2rem;
   font-size: 1rem;
-  font-weight: 500;
   color: var(--color-secondary);
   margin: 0;
   padding: 0;
 }
 
 .navLinks li {
+  list-style: none;
   cursor: pointer;
   transition: color 0.3s;
+  font-weight: 100;
 }
 
 .navLinks li:hover {
+  font-weight: 600;
   color: var(--color-primary);
 }
 
