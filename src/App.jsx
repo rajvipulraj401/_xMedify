@@ -6,8 +6,6 @@ import "./App.css";
 import Faq from "./components/Faq/Faq";
 import Footer from "./components/Footer/Footer";
 import Download from "./components/Download/Download";
-import BookingCard from "./components/BookingCard/BookingCard";
-import AdCard from "./components/AdCard/AdCard";
 
 const App = () => {
   return (

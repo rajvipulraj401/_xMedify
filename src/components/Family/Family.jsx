@@ -35,6 +35,7 @@ const Family = () => {
 
         <div className={styles.statCard}>
           <div className={styles.iconCircle + " " + styles.yellow}>
+            {/* Giving two styles by giving space in between  */}
             <FaMicroscope />
           </div>
           <h3>1000+</h3>

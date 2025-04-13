@@ -7,9 +7,9 @@ const Coupon = () => {
   return (
     <div className={styles.container}>
       <img src={Coupon1} alt="Coupon 1" className={styles.couponImg} />
-      {/* <img src={Coupon2} alt="Coupon 2" className={styles.couponImg} />
+      <img src={Coupon2} alt="Coupon 2" className={styles.couponImg} />
       <img src={Coupon1} alt="Coupon 3" className={styles.couponImg} />
-      <img src={Coupon1} alt="Coupon 1" className={styles.couponImg} />
+      {/* <img src={Coupon1} alt="Coupon 1" className={styles.couponImg} />
       <img src={Coupon2} alt="Coupon 2" className={styles.couponImg} />
       <img src={Coupon1} alt="Coupon 3" className={styles.couponImg} /> */}
     </div>

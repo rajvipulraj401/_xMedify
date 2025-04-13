@@ -101,8 +101,9 @@ const Navbar = () => {
             <NavLink
               to="/Facilities"
               className={({ isActive }) =>
-                isActive
-                  ? `${styles.navLink} ${styles.activeLink}`
+                isActive //(same both concatenating two styles)
+                  ? // ? `${styles.navLink} ${styles.activeLink}`
+                    styles.navLink + " " + styles.activeLink
                   : styles.navLink
               }
               // style={{ textDecoration: "none", all: "unset" }}
