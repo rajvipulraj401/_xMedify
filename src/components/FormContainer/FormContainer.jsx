@@ -64,6 +64,7 @@ const FormContainer = ({ onSearch, type = "input" }) => {
         <>
           <select
             className={styles.select}
+            id="state" // Added ID here
             onChange={(e) => setSelectedState(e.target.value)}
             required
           >
@@ -79,6 +80,7 @@ const FormContainer = ({ onSearch, type = "input" }) => {
 
           <select
             className={styles.select}
+            id="city" // Added ID here
             onChange={(e) => setSelectedCity(e.target.value)}
             disabled={!selectedState}
             required
