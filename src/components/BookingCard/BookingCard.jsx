@@ -58,7 +58,8 @@ const BookingCard = () => {
         </div>
       </div>
 
-      <div className={styles.tabContainer}>
+      {/* ---------Below is booking time selecter------- */}
+      <div style={{ display: "" }} className={styles.tabContainer}>
         <div className={styles.tabSwitchContainer}>
           <div className={styles.arrow} onClick="">
             <FaCircleChevronLeft />

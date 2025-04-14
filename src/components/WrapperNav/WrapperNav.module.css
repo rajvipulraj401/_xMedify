@@ -6,3 +6,11 @@
   background-color: var(--color-primary);
   position: relative;
 }
+
+.wrapper h2 {
+  text-align: start;
+
+  padding: 20px 200px;
+  color: var(--color-white);
+  font-size: 35px;
+}

@@ -71,11 +71,21 @@ const SearchContainer = ({
   // type = "input", // "select" or "input"
   type,
   onSubmit,
+  width,
+  padding,
 }) => {
+  const SearchFormContainer = {
+    width: width ? width : "1166px",
+    height: "105px",
+    padding: padding ? padding : "27px",
+    boxShadow: "6px 6px 35px 0px rgba(16, 40, 81, 0.11)",
+    borderRadius: "15px",
+    backgroundColor: "var(--color-white)",
+  };
   return (
     <div className={styles.fullContainer}>
-      <div className={styles.searchFormContainer}>
-        <FormContainer onSearch={onSubmit} type={type} />
+      <div style={SearchFormContainer}>
+        <FormContainer onSubmit={onSubmit} type={type} />
       </div>
     </div>
   );

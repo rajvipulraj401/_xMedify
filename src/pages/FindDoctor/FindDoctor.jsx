@@ -53,20 +53,20 @@ import SearchContainer from "../../components/SearchContainer/SearchContainer";
 import HospitalInfo from "../../components/HospitalInfo/HospitalInfo";
 import styles from "./FindDoctor.module.css";
 
-const FindDoctor = () => {
+const FindDoctor = ({ onSubmit }) => {
   const handleLocationSearch = ({ selectedState, selectedCity }) => {
     console.log("State:", selectedState);
     console.log("City:", selectedCity);
     // fetch hospitals etc.
   };
 
-  const handleHospitalSearch = (e) => {
-    e.preventDefault();
-    const form = new FormData(e.target);
-    const hospitalName = form.get("hospital");
-    console.log("Hospital Search:", hospitalName);
-    // fetch hospital info
-  };
+  // const handleHospitalSearch = (e) => {
+  //   e.preventDefault();
+  //   const form = new FormData(e.target);
+  //   const hospitalName = form.get("hospital");
+  //   console.log("Hospital Search:", hospitalName);
+  //   // fetch hospital info
+  // };
 
   return (
     <div className={styles.findDoctorPage}>

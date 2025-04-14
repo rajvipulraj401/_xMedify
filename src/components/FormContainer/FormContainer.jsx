@@ -3,12 +3,14 @@ import styles from "./FormContainer.module.css";
 import Button from "../Button/Button";
 import { FaSearch } from "react-icons/fa";
 
-const FormContainer = ({ onSearch, type = "input" }) => {
+const FormContainer = ({ onSubmit, type = "input" }) => {
   // Accept type prop
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
+  const [Hospital, setHospital] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedHospital, setSelectedHospital] = useState("");
   const [bookingId, setBookingId] = useState("");
 
   // fetch states on mount
@@ -26,30 +28,32 @@ const FormContainer = ({ onSearch, type = "input" }) => {
     }
   }, [selectedState]);
 
+  // fetch cities when state changes
+  useEffect(() => {
+    if (selectedCity) {
+      fetchData(
+        // `https://meddata-backend.onrender.com/cities/${selectedState}`,
+        `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
+        setHospital
+
+        // IN THIS we are getting array of objects
+      );
+    }
+  }, [selectedCity]);
+
   const fetchData = async (endpoint, setter) => {
     try {
       const res = await fetch(endpoint);
       const data = await res.json();
       setter(data);
+      // console.log(data);
     } catch (err) {
       console.error("Fetch error:", err);
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (type === "input") {
-      // If type is input, submit bookingId
-      onSearch({ bookingId });
-    } else {
-      // Else submit selected state and city
-      onSearch({ selectedState, selectedCity });
-    }
-  };
-
   return (
-    <form className={styles.searchForm} onSubmit={handleSubmit}>
+    <form className={styles.searchForm} onSubmit={onSubmit}>
       {type === "input" ? ( // Conditionally render input field
         <input
           type="text"
@@ -61,6 +65,7 @@ const FormContainer = ({ onSearch, type = "input" }) => {
           required
         />
       ) : (
+        // selecting state and city to fetch hospitals
         <>
           <div id="state">
             {" "}
