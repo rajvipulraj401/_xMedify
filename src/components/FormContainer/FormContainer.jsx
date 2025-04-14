@@ -10,7 +10,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
   const [Hospital, setHospital] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [selectedHospital, setSelectedHospital] = useState("");
   const [bookingId, setBookingId] = useState("");
 
   // fetch states on mount
@@ -52,8 +51,28 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
     }
   };
 
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    if (type === "input") {
+      onSubmit({ bookingId });
+    } else {
+      onSubmit({
+        selectedState,
+        selectedCity,
+        hospitals: Hospital, // 👈 yahi data parent tak bhejna hai
+      });
+    }
+  };
+  /* Logic What i did ?
+
+-- i on submit of form  bundled all the data and send it to parent methdo
+of onSubmit so that parent can send that data across 
+
+*/
+
   return (
-    <form className={styles.searchForm} onSubmit={onSubmit}>
+    <form className={styles.searchForm} onSubmit={handleSearch}>
       {type === "input" ? ( // Conditionally render input field
         <input
           type="text"

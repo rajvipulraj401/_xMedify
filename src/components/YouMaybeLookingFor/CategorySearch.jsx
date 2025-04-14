@@ -126,17 +126,17 @@ import {
 import SpecialisationCard from "../SpecialisationCard/SpecialisationCard";
 import FormContainer from "../FormContainer/FormContainer";
 
-const CategorySearch = () => {
-  const handleSearch = ({ selectedState, selectedCity }) => {
-    console.log("State:", selectedState);
-    console.log("City:", selectedCity);
-    // Perform search logic here
-  };
+const CategorySearch = ({ onSubmit }) => {
+  // const handleSearch = ({ selectedState, selectedCity }) => {
+  //   console.log("State:", selectedState);
+  //   console.log("City:", selectedCity);
+  //   // Perform search logic here
+  // };
 
   return (
     <div className={styles.searchContainer}>
       {/* Below is form  --👇🏼👇🏼👇🏼👇🏼👇🏼 */}
-      <FormContainer onSearch={handleSearch} type="select" />
+      <FormContainer onSubmit={onSubmit} type="select" />
 
       {/* Above is form below is not important --👆🏼👆🏼👆🏼👆🏼👆🏼 */}
 

@@ -4,7 +4,7 @@ import CategorySearch from "../YouMaybeLookingFor/CategorySearch";
 import DoctorImage from "../../assets/Doc.png";
 import Button from "../Button/Button";
 
-const Hero = ({ onSearchClick }) => {
+const Hero = ({ onSubmit }) => {
   return (
     <div className={styles.heroContainer}>
       <div className={styles.topSection}>
@@ -29,7 +29,7 @@ const Hero = ({ onSearchClick }) => {
           <img src={DoctorImage} alt="Doctor" className={styles.docImg} />
         </div>
       </div>
-      <CategorySearch onSearchClick={onSearchClick} />
+      <CategorySearch onSubmit={onSubmit} />
     </div>
   );
 };

@@ -9,23 +9,28 @@ import Download from "./components/Download/Download";
 import MyBookings from "./pages/MyBookings/MyBookings";
 
 const App = () => {
-  const [stateSelected, setStateSelected] = useState(null);
-  const [CitySelected, setCitySelected] = useState(null);
+  const [Hospital, setHospital] = useState([]);
+  const [bookingId, setBookingId] = useState("");
 
-  const handleSearch = function (e) {
-    // return();
-    // when both State and City are selected do api call and send results
-    // to FindDoctor component
+  const handleSearch = function (data) {
+    //--- this is only getting the data this function
 
-    e.preventDefault();
+    console.log(data);
 
-    if (type === "input") {
-      // If type is input, submit bookingId
-      onSearch({ bookingId });
+    // step1 : if i receive the booking id in the object data received
+
+    if (data.bookingId) {
+      // Do something with bookingId
+      console.log("Booking ID:", data.bookingId);
     } else {
-      // Else submit selected state and city
-      onSearch({ selectedState, selectedCity });
+      // ✅ Save hospital and location data
+      console.log("Hosptial:", data.hospitals);
+      setHospital(data.hospitals);
+      // setStateSelected(data.selectedState);
+      // setCitySelected(data.selectedCity);
     }
+
+    console.log("mujhe Dabaya gaya hai");
   };
 
   return (
@@ -34,12 +39,14 @@ const App = () => {
       <Routes>
         <Route
           path="/"
-          element={<Home onSearchClick={handleSearch}> </Home>}
+          element={<Home onSubmit={handleSearch}> </Home>}
         ></Route>
         {/* FindDoctor page */}
         <Route
           path="/FindDoctor"
-          element={<FindDoctor onSubmit={handleSearch} />}
+          element={
+            <FindDoctor onSubmit={handleSearch} hospitalData={Hospital} />
+          }
         ></Route>
         {/* booking page */}
         <Route

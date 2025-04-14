@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 import TimingBlock from "../TimingBlock/TimingBlock";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
-const BookingCard = () => {
+const BookingCard = ({ Name, City, State, Rating }) => {
   const [activeTab, setActiveTab] = useState(null); //  Initially no tab is selected
 
   const handleDateClick = (index) => {};
@@ -27,9 +27,11 @@ const BookingCard = () => {
 
         {/* Center: Hospital Info */}
         <div className={styles.middleSection}>
-          <h3 className={styles.title}>Fortis Hospital Richmond Road</h3>
+          <h3 className={styles.title}>{Name}</h3>
           <p className={styles.location}>
-            <strong>Banglore, Karnataka</strong>
+            <strong>
+              {City}, {State}
+            </strong>
           </p>
           <p className={styles.description}>
             Smilessence Center for Advanced Dentistry + 1 more
@@ -40,7 +42,7 @@ const BookingCard = () => {
             clinic
           </p>
           <div className={styles.rating}>
-            👍 <span>5</span>
+            👍 <span>{Rating}</span>
           </div>
         </div>
 

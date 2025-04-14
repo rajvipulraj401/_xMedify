@@ -53,7 +53,7 @@ import SearchContainer from "../../components/SearchContainer/SearchContainer";
 import HospitalInfo from "../../components/HospitalInfo/HospitalInfo";
 import styles from "./FindDoctor.module.css";
 
-const FindDoctor = ({ onSubmit }) => {
+const FindDoctor = ({ onSubmit, hospitalData }) => {
   const handleLocationSearch = ({ selectedState, selectedCity }) => {
     console.log("State:", selectedState);
     console.log("City:", selectedCity);
@@ -74,12 +74,12 @@ const FindDoctor = ({ onSubmit }) => {
       <WrapperNav />
 
       {/* 1. Select State/City (FormContainer will be used internally) */}
-      <SearchContainer type="select" onSubmit={handleLocationSearch} />
+      <SearchContainer type="select" onSubmit={onSubmit} />
 
       {/*  2. Search by hospital name */}
       {/* <SearchContainer type="input" onSubmit={handleHospitalSearch} /> */}
 
-      <HospitalInfo />
+      <HospitalInfo hospitalData={hospitalData} />
     </div>
   );
 };
