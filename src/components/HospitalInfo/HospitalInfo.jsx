@@ -8,7 +8,10 @@ const HospitalInfo = ({ hospitalData }) => {
       <div className={styles.hospitalInfoContainer}>
         <div className={styles.hospitalInfoContent}>
           <div className={styles.infoText}>
-            <h3>15 medical centers available in Alaska</h3>
+            <h3>
+              {hospitalData.length} medical centers available in{" "}
+              {hospitalData[0].State}
+            </h3>
             <h5>
               {" "}
               <span>✔</span> Book appointments with minimum wait-time & verified
