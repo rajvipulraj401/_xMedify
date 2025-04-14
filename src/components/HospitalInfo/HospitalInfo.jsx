@@ -40,7 +40,7 @@ const HospitalInfo = ({ hospitalData }) => {
 
               <ul>
                 {hospitalData.map((hospital, index) => (
-                  <li key={index}>
+                  <li key={index} data-cy="hospital-item">
                     {hospital.State}
                     <BookingCard
                       Name={hospital["Hospital Name"]}
