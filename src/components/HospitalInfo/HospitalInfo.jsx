@@ -10,7 +10,7 @@ const HospitalInfo = ({ hospitalData }) => {
           <div className={styles.infoText}>
             <h3>
               {hospitalData.length} medical centers available in{" "}
-              {hospitalData[0].State}
+              {hospitalData[0]?.State}
             </h3>
             <h5>
               {" "}
@@ -26,7 +26,7 @@ const HospitalInfo = ({ hospitalData }) => {
               {/* NOw we get the hospital so as many hospital we loop and create that no of
                */}
 
-              {hospitalData.map((hospital, index) => {
+              {/* {hospitalData.map((hospital, index) => {
                 return (
                   <BookingCard
                     key={index}
@@ -36,7 +36,20 @@ const HospitalInfo = ({ hospitalData }) => {
                     Rating={hospital["Hospital overall rating"]}
                   ></BookingCard>
                 );
-              })}
+              })} */}
+
+              <ul>
+                {hospitalData.map((hospital, index) => (
+                  <li key={index}>
+                    <BookingCard
+                      Name={hospital["Hospital Name"]}
+                      City={hospital.City}
+                      State={hospital.State}
+                      Rating={hospital["Hospital overall rating"]}
+                    />
+                  </li>
+                ))}
+              </ul>
             </div>
 
             {/* Booking card rendering ends here */}
