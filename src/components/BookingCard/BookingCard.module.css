@@ -1,15 +1,96 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  background: #ffffff;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  gap: 20px;
+  border-radius: 15px;
+  height: auto;
+}
+
+.tabContainer {
+  /* outline: 1px solid red; */
+  padding: 40px 0px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.tabSwitchContainer {
+  display: flex;
+  /* gap: 30px; */
+  justify-content: space-between;
+  text-align: center;
+}
+
+.tabSwitch {
+  cursor: pointer;
+}
+
+.arrow {
+  /* color: var(--color-white); */
+  background-color: var(--color-white);
+  cursor: pointer;
+}
+
+.arrow svg {
+  font-size: 35px;
+  color: var(--color-primary);
+}
+
+.tabSwitchContainer h4 {
+  margin-bottom: 5px;
+}
+.tabSwitchContainer span {
+  color: #27ae60;
+}
+
+.tabContainerTiming {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 40px;
+  margin: 30px 0;
+  /* grid-template-columns: repeat(6, 1fr); */
+  /* outline: 1px solid red; */
+
+  /* display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 50px;
+  padding: 30px 20px; */
+}
+.row1 {
+  /* outline: 1px solid blue; */
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.dateTrackerLine {
+  height: 8px;
+  width: 90%;
+  align-self: center;
+  /* border: 1px solid black; */
+  border-radius: 20px;
+  /* background-color: var(--color-primary); */
+  background-color: rgba(173, 223, 230, 0.3);
+}
+
+/* ------------------TopSectionCode below👇🏼👇🏼👇🏼👇🏼👇🏼-------------- */
 .card {
   display: flex;
   align-items: flex-start;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* background: #ffffff; */
+  /* border-radius: 16px; */
+  /* padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
   gap: 20px;
   justify-content: space-between;
-  flex-wrap: wrap;
   /* outline: 1px solid blue; */
-  height: 225px;
 
   max-width: 800px;
 }
@@ -139,9 +220,5 @@
     align-items: flex-start;
     width: 100%;
     margin-top: 10px;
-  }
-
-  .rightSection button {
-    width: 100%;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home/Home";
 import FindDoctor from "./pages/FindDoctor/FindDoctor";
@@ -8,6 +8,15 @@ import Footer from "./components/Footer/Footer";
 import Download from "./components/Download/Download";
 
 const App = () => {
+  const [stateSelected, setStateSelected] = useState(null);
+  const [CitySelected, setCitySelected] = useState(null);
+
+  const handleSearch = function () {
+    // return();
+    // when both State and City are selected do api call and send results
+    // to FindDoctor component
+  };
+
   return (
     <div className="AppContainer">
       <Routes>
