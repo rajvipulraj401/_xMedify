@@ -41,6 +41,7 @@ const HospitalInfo = ({ hospitalData }) => {
               <ul>
                 {hospitalData.map((hospital, index) => (
                   <li key={index}>
+                    <span>{hospital.State}</span>
                     <BookingCard
                       Name={hospital["Hospital Name"]}
                       City={hospital.City}
