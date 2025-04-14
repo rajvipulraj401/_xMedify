@@ -22,38 +22,60 @@
 // };
 
 // export default SearchContainer;
+// -----------------Version 1.1 ----------------😐😐😐😐
+// import React from "react";
+// import styles from "./SearchContainer.module.css";
+// import Button from "../Button/Button";
+// import { FaSearch } from "react-icons/fa";
+
+// const SearchContainer = ({ inputs = [], onSubmit, buttonText = "Search" }) => {
+//   return (
+//     <div className={styles.fullContainer}>
+//       <div className={styles.searchFormContainer}>
+//         <form className={styles.searchForm} onSubmit={onSubmit}>
+//           {inputs.map((input, index) => (
+//             <input
+//               key={index}
+//               type="text"
+//               placeholder={input.placeholder}
+//               name={input.name}
+//               className={styles.input}
+//             />
+//           ))}
+
+//           <Button
+//             width="250px"
+//             height="50px"
+//             background="var(--color-primary)"
+//             type="submit"
+//           >
+//             <div className={styles.iconDownload}>
+//               <FaSearch />
+//             </div>
+//             <div>{buttonText}</div>
+//           </Button>
+//         </form>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default SearchContainer;
+
+// ------------------2nd Version After making FormContainer component ----------
 import React from "react";
 import styles from "./SearchContainer.module.css";
-import Button from "../Button/Button";
-import { FaSearch } from "react-icons/fa";
+import FormContainer from "../FormContainer/FormContainer";
 
-const SearchContainer = ({ inputs = [], onSubmit, buttonText = "Search" }) => {
+const SearchContainer = ({
+  // type = "input", // "select" or "input"
+  type,
+  onSubmit,
+}) => {
   return (
     <div className={styles.fullContainer}>
       <div className={styles.searchFormContainer}>
-        <form className={styles.searchForm} onSubmit={onSubmit}>
-          {inputs.map((input, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder={input.placeholder}
-              name={input.name}
-              className={styles.input}
-            />
-          ))}
-
-          <Button
-            width="250px"
-            height="50px"
-            background="var(--color-primary)"
-            type="submit"
-          >
-            <div className={styles.iconDownload}>
-              <FaSearch />
-            </div>
-            <div>{buttonText}</div>
-          </Button>
-        </form>
+        <FormContainer onSearch={onSubmit} type={type} />
       </div>
     </div>
   );

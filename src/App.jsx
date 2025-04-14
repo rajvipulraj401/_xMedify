@@ -20,8 +20,14 @@ const App = () => {
   return (
     <div className="AppContainer">
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/FindDoctor" element={<FindDoctor />}></Route>
+        <Route
+          path="/"
+          element={<Home onSearchClick={handleSearch}> </Home>}
+        ></Route>
+        <Route
+          path="/FindDoctor"
+          element={<FindDoctor onSearchClick={handleSearch} />}
+        ></Route>
       </Routes>
 
       <Faq></Faq>

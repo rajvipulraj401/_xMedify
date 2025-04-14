@@ -31,7 +31,7 @@ const Button = ({
   return (
     <>
       <button
-        type="button"
+        type="submit"
         className={styles.buttonContainer}
         /* GETTING bg color as props but not setting it here directly setting
          it in css file as a variable css and bs iska opacity ghata badha diye

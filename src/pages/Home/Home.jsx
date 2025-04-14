@@ -8,11 +8,11 @@ import PatientCaring from "../../components/PatientCaring/PatientCaring";
 import MedicalSpecialist from "../../components/MedicalSpecialist/MedicalSpecialist";
 import Coupon from "../../components/Coupon/Coupon";
 
-const Home = () => {
+const Home = ({ onSearchClick }) => {
   return (
     <>
       <Navbar></Navbar>
-      <Hero></Hero>
+      <Hero onSearchClick={onSearchClick}></Hero>
       <Coupon></Coupon>
       <Specialisation></Specialisation>
       <Blogs></Blogs>
