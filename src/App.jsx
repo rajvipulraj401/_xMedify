@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Routes, Route } from "react-router";
+import { Routes, Route, useNavigate } from "react-router";
 import Home from "./pages/Home/Home";
 import FindDoctor from "./pages/FindDoctor/FindDoctor";
 import "./App.css";
@@ -9,6 +9,7 @@ import Download from "./components/Download/Download";
 import MyBookings from "./pages/MyBookings/MyBookings";
 
 const App = () => {
+  const navigate = useNavigate();
   const [Hospital, setHospital] = useState([]);
   const [bookingId, setBookingId] = useState("");
 
@@ -22,15 +23,17 @@ const App = () => {
     if (data.bookingId) {
       // Do something with bookingId
       console.log("Booking ID:", data.bookingId);
-    } else {
-      // ✅ Save hospital and location data
-      console.log("Hosptial:", data.hospitals);
-      setHospital(data.hospitals);
-      // setStateSelected(data.selectedState);
-      // setCitySelected(data.selectedCity);
     }
 
-    console.log("mujhe Dabaya gaya hai");
+    // Step 2: if i get hospital data setHospital data and navigate to FindDoctor page
+    else {
+      console.log("Hosptial:", data.hospitals);
+      setHospital(data.hospitals);
+      // ✅ Redirect to FindDoctor page after setting hospitals
+      navigate("/FindDoctor");
+    }
+
+    // console.log("mujhe Dabaya gaya hai");
   };
 
   return (
