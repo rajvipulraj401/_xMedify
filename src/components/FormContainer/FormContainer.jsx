@@ -62,38 +62,44 @@ const FormContainer = ({ onSearch, type = "input" }) => {
         />
       ) : (
         <>
-          <select
-            className={styles.select}
-            id="state" // Added ID here
-            onChange={(e) => setSelectedState(e.target.value)}
-            required
-          >
-            <option value="" hidden>
-              Select State
-            </option>
-            {states.map((state) => (
-              <option key={state} value={state}>
-                {state}
+          <div id="state">
+            {" "}
+            {/* Add div with id="state" */}
+            <select
+              className={styles.select}
+              onChange={(e) => setSelectedState(e.target.value)}
+              required
+            >
+              <option value="" hidden>
+                Select State
               </option>
-            ))}
-          </select>
+              {states.map((state) => (
+                <option key={state} value={state}>
+                  {state}
+                </option>
+              ))}
+            </select>
+          </div>
 
-          <select
-            className={styles.select}
-            id="city" // Added ID here
-            onChange={(e) => setSelectedCity(e.target.value)}
-            disabled={!selectedState}
-            required
-          >
-            <option value="" hidden>
-              Select City
-            </option>
-            {cities.map((city) => (
-              <option key={city} value={city}>
-                {city}
+          <div id="city">
+            {" "}
+            {/* Add div with id="city" */}
+            <select
+              className={styles.select}
+              onChange={(e) => setSelectedCity(e.target.value)}
+              disabled={!selectedState}
+              required
+            >
+              <option value="" hidden>
+                Select City
               </option>
-            ))}
-          </select>
+              {cities.map((city) => (
+                <option key={city} value={city}>
+                  {city}
+                </option>
+              ))}
+            </select>
+          </div>
         </>
       )}
 
