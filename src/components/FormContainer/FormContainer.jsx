@@ -245,7 +245,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
         </div>
       ) : (
         <>
-          <FormControl sx={{ mb: 1, flex: 1 }}>
+          <FormControl sx={{ mb: 1, flex: 1 }} id="state">
             <InputLabel>Select State</InputLabel>
             <Select
               value={selectedState}
@@ -261,7 +261,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ mb: 1, flex: 1 }}>
+          <FormControl sx={{ mb: 1, flex: 1 }} id="city">
             <InputLabel>Select City</InputLabel>
             <Select
               value={selectedCity}
