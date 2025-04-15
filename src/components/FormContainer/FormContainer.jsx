@@ -299,7 +299,6 @@
 // export default FormContainer;
 
 // -----------3rd time------
-
 import React, { useState, useEffect } from "react";
 import {
   Select,
@@ -318,6 +317,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [bookingId, setBookingId] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false); // ⬅️ added
 
   useEffect(() => {
     fetchData("https://meddata-backend.onrender.com/states", setStates);
@@ -351,17 +351,21 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
     }
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // ⬅️ added
+
     if (type === "input") {
-      onSubmit({ bookingId });
+      await onSubmit({ bookingId });
     } else {
-      onSubmit({
+      await onSubmit({
         selectedState,
         selectedCity,
         hospitals: Hospital,
       });
     }
+
+    setIsSubmitting(false); // ⬅️ added
   };
 
   return (
@@ -393,6 +397,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             type="submit"
             variant="contained"
             startIcon={<FaSearch />}
+            disabled={isSubmitting} // ⬅️ added
             sx={{
               height: "50px",
               whiteSpace: "nowrap",
@@ -446,6 +451,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             type="submit"
             variant="contained"
             startIcon={<FaSearch />}
+            disabled={isSubmitting} // ⬅️ added
             sx={{
               height: "50px",
               width: "120px",
