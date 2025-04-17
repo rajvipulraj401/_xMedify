@@ -33,16 +33,14 @@
 }
 
 .imageWrapper {
-  position: relative;
-  width: 500px;
+  /* position: relative; */
+  width: 600px;
   /* width: 50%; */
-  max-width: 100%;
+  /* max-width: 100%; */
 }
 
 .mainImg {
   width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .emojiBox {

@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./PatientCaring.module.css";
-import patient2 from "../../assets/patient2.png";
+import patient from "../../assets/patient.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -9,18 +9,19 @@ const PatientCaring = () => {
     <div className={styles.container}>
       <div className={styles.left}>
         <div className={styles.imgBox1}>
-          <img src="patient1.png" alt="patient1" />
-          <div className={styles.consultBox}>
+          {/* <img src="patient.png" alt="patient" /> */}
+          <img src={patient} alt="patient" />
+          {/* <div className={styles.consultBox}>
             <FaPhoneAlt className={styles.callIcon} />
             <div>
               <h4>Free Consultation</h4>
               <p>Consultation with the best</p>
             </div>
-          </div>
+          </div> */}
         </div>
-        <div className={styles.imgBox2}>
+        {/* <div className={styles.imgBox2}>
           <img src={patient2} alt="patient2" />
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.right}>

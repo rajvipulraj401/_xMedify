@@ -1,9 +1,7 @@
 import React from "react";
 import styles from "./Faq.module.css";
 import smiling from "../../assets/smiling.png";
-import heart from "../../assets/heart.png";
 import { FaPlus } from "react-icons/fa";
-import { CiFaceSmile } from "react-icons/ci";
 
 const faqData = [
   "Why choose our medical for your family?",
@@ -27,20 +25,6 @@ const Faq = () => {
               alt="Doctor with patient"
               className={styles.mainImg}
             />
-
-            {/* Emoji Box */}
-            <div className={styles.emojiBox}>
-              <span role="img" aria-label="smile">
-                <CiFaceSmile className={styles.imgSpan} />
-              </span>
-              <div>
-                <h3>84k+</h3>
-                <p>Happy Patients</p>
-              </div>
-            </div>
-
-            {/* Heart Icon */}
-            <img src={heart} alt="Heart icon" className={styles.heartIcon} />
           </div>
         </div>
 
