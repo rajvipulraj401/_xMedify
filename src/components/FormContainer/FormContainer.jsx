@@ -140,165 +140,6 @@
 // export default FormContainer;
 
 // // // --------------------------- (2nd time code*)---------------
-// import React, { useState, useEffect } from "react";
-// import {
-//   Select,
-//   MenuItem,
-//   FormControl,
-//   InputLabel,
-//   Button,
-// } from "@mui/material";
-// import { FaSearch } from "react-icons/fa";
-// import styles from "./FormContainer.module.css";
-
-// const FormContainer = ({ onSubmit, type = "input" }) => {
-//   const [states, setStates] = useState([]);
-//   const [cities, setCities] = useState([]);
-//   const [Hospital, setHospital] = useState([]);
-//   const [selectedState, setSelectedState] = useState("");
-//   const [selectedCity, setSelectedCity] = useState("");
-//   const [bookingId, setBookingId] = useState("");
-
-//   useEffect(() => {
-//     fetchData("https://meddata-backend.onrender.com/states", setStates);
-//   }, []);
-
-//   useEffect(() => {
-//     if (selectedState) {
-//       fetchData(
-//         `https://meddata-backend.onrender.com/cities/${selectedState}`,
-//         setCities
-//       );
-//     }
-//   }, [selectedState]);
-
-//   useEffect(() => {
-//     if (selectedCity) {
-//       fetchData(
-//         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
-//         setHospital
-//       );
-//     }
-//   }, [selectedCity]);
-
-//   const fetchData = async (endpoint, setter) => {
-//     try {
-//       const res = await fetch(endpoint);
-//       const data = await res.json();
-//       setter(data);
-//     } catch (err) {
-//       console.error("Fetch error:", err);
-//     }
-//   };
-
-//   const handleSearch = (e) => {
-//     e.preventDefault();
-//     if (type === "input") {
-//       onSubmit({ bookingId });
-//     } else {
-//       onSubmit({
-//         selectedState,
-//         selectedCity,
-//         hospitals: Hospital,
-//       });
-//     }
-//   };
-
-//   return (
-//     <form className={styles.searchForm} onSubmit={handleSearch}>
-//       {type === "input" ? (
-//         <div
-//           style={{
-//             display: "flex",
-//             gap: "1rem",
-//             alignItems: "center",
-//             width: "100%",
-//           }}
-//         >
-//           <input
-//             type="text"
-//             name="hospital"
-//             className={styles.select}
-//             placeholder="Search By Hospital"
-//             value={bookingId}
-//             onChange={(e) => setBookingId(e.target.value)}
-//             required
-//             style={{
-//               flex: 1, // input will take most of the width
-//               minWidth: "0", // helps in flex shrinking properly
-//             }}
-//           />
-
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             startIcon={<FaSearch />}
-//             sx={{
-//               height: "50px",
-//               whiteSpace: "nowrap",
-//               backgroundColor: "var(--color-primary)",
-//               minWidth: "120px", // button will stay fixed width
-//             }}
-//           >
-//             Search
-//           </Button>
-//         </div>
-//       ) : (
-//         <>
-//           <FormControl sx={{ mb: 1, flex: 1 }} id="state">
-//             <InputLabel>Select State</InputLabel>
-//             <Select
-//               value={selectedState}
-//               onChange={(e) => setSelectedState(e.target.value)}
-//               required
-//               label="Select State"
-//             >
-//               {states.map((state) => (
-//                 <MenuItem key={state} value={state}>
-//                   {state}
-//                 </MenuItem>
-//               ))}
-//             </Select>
-//           </FormControl>
-
-//           <FormControl sx={{ mb: 1, flex: 1 }} id="city">
-//             <InputLabel>Select City</InputLabel>
-//             <Select
-//               value={selectedCity}
-//               onChange={(e) => setSelectedCity(e.target.value)}
-//               required
-//               label="Select City"
-//               disabled={!selectedState}
-//             >
-//               {cities.map((city) => (
-//                 <MenuItem key={city} value={city}>
-//                   {city}
-//                 </MenuItem>
-//               ))}
-//             </Select>
-//           </FormControl>
-
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             startIcon={<FaSearch />}
-//             sx={{
-//               height: "50px",
-//               width: "120px",
-//               backgroundColor: "var(--color-primary)",
-//             }}
-//           >
-//             Search
-//           </Button>
-//         </>
-//       )}
-//     </form>
-//   );
-// };
-
-// export default FormContainer;
-
-// -----------3rd time------ (isme booking test pass kr rha hai)
 import React, { useState, useEffect } from "react";
 import {
   Select,
@@ -317,7 +158,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [bookingId, setBookingId] = useState("");
-  const [loading, setLoading] = useState(false); // ✅ added loading state
 
   useEffect(() => {
     fetchData("https://meddata-backend.onrender.com/states", setStates);
@@ -334,13 +174,9 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
 
   useEffect(() => {
     if (selectedCity) {
-      setLoading(true); // ✅ start loading
       fetchData(
         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
-        (data) => {
-          setHospital(data);
-          setLoading(false); // ✅ stop loading
-        }
+        setHospital
       );
     }
   }, [selectedCity]);
@@ -388,8 +224,8 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             onChange={(e) => setBookingId(e.target.value)}
             required
             style={{
-              flex: 1,
-              minWidth: "0",
+              flex: 1, // input will take most of the width
+              minWidth: "0", // helps in flex shrinking properly
             }}
           />
 
@@ -401,7 +237,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
               height: "50px",
               whiteSpace: "nowrap",
               backgroundColor: "var(--color-primary)",
-              minWidth: "120px",
+              minWidth: "120px", // button will stay fixed width
             }}
           >
             Search
@@ -446,7 +282,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             type="submit"
             variant="contained"
             startIcon={<FaSearch />}
-            disabled={!selectedState || !selectedCity || loading} // ✅ fix here
             sx={{
               height: "50px",
               width: "120px",
@@ -462,3 +297,168 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
 };
 
 export default FormContainer;
+
+// -----------3rd time------
+// import React, { useState, useEffect } from "react";
+// import {
+//   Select,
+//   MenuItem,
+//   FormControl,
+//   InputLabel,
+//   Button,
+// } from "@mui/material";
+// import { FaSearch } from "react-icons/fa";
+// import styles from "./FormContainer.module.css";
+
+// const FormContainer = ({ onSubmit, type = "input" }) => {
+//   const [states, setStates] = useState([]);
+//   const [cities, setCities] = useState([]);
+//   const [Hospital, setHospital] = useState([]);
+//   const [selectedState, setSelectedState] = useState("");
+//   const [selectedCity, setSelectedCity] = useState("");
+//   const [bookingId, setBookingId] = useState("");
+//   const [loading, setLoading] = useState(false); // ✅ added loading state
+
+//   useEffect(() => {
+//     fetchData("https://meddata-backend.onrender.com/states", setStates);
+//   }, []);
+
+//   useEffect(() => {
+//     if (selectedState) {
+//       fetchData(
+//         `https://meddata-backend.onrender.com/cities/${selectedState}`,
+//         setCities
+//       );
+//     }
+//   }, [selectedState]);
+
+//   useEffect(() => {
+//     if (selectedCity) {
+//       setLoading(true); // ✅ start loading
+//       fetchData(
+//         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
+//         (data) => {
+//           setHospital(data);
+//           setLoading(false); // ✅ stop loading
+//         }
+//       );
+//     }
+//   }, [selectedCity]);
+
+//   const fetchData = async (endpoint, setter) => {
+//     try {
+//       const res = await fetch(endpoint);
+//       const data = await res.json();
+//       setter(data);
+//     } catch (err) {
+//       console.error("Fetch error:", err);
+//     }
+//   };
+
+//   const handleSearch = (e) => {
+//     e.preventDefault();
+//     if (type === "input") {
+//       onSubmit({ bookingId });
+//     } else {
+//       onSubmit({
+//         selectedState,
+//         selectedCity,
+//         hospitals: Hospital,
+//       });
+//     }
+//   };
+
+//   return (
+//     <form className={styles.searchForm} onSubmit={handleSearch}>
+//       {type === "input" ? (
+//         <div
+//           style={{
+//             display: "flex",
+//             gap: "1rem",
+//             alignItems: "center",
+//             width: "100%",
+//           }}
+//         >
+//           <input
+//             type="text"
+//             name="hospital"
+//             className={styles.select}
+//             placeholder="Search By Hospital"
+//             value={bookingId}
+//             onChange={(e) => setBookingId(e.target.value)}
+//             required
+//             style={{
+//               flex: 1,
+//               minWidth: "0",
+//             }}
+//           />
+
+//           <Button
+//             type="submit"
+//             variant="contained"
+//             startIcon={<FaSearch />}
+//             sx={{
+//               height: "50px",
+//               whiteSpace: "nowrap",
+//               backgroundColor: "var(--color-primary)",
+//               minWidth: "120px",
+//             }}
+//           >
+//             Search
+//           </Button>
+//         </div>
+//       ) : (
+//         <>
+//           <FormControl sx={{ mb: 1, flex: 1 }} id="state">
+//             <InputLabel>Select State</InputLabel>
+//             <Select
+//               value={selectedState}
+//               onChange={(e) => setSelectedState(e.target.value)}
+//               required
+//               label="Select State"
+//             >
+//               {states.map((state) => (
+//                 <MenuItem key={state} value={state}>
+//                   {state}
+//                 </MenuItem>
+//               ))}
+//             </Select>
+//           </FormControl>
+
+//           <FormControl sx={{ mb: 1, flex: 1 }} id="city">
+//             <InputLabel>Select City</InputLabel>
+//             <Select
+//               value={selectedCity}
+//               onChange={(e) => setSelectedCity(e.target.value)}
+//               required
+//               label="Select City"
+//               disabled={!selectedState}
+//             >
+//               {cities.map((city) => (
+//                 <MenuItem key={city} value={city}>
+//                   {city}
+//                 </MenuItem>
+//               ))}
+//             </Select>
+//           </FormControl>
+
+//           <Button
+//             type="submit"
+//             variant="contained"
+//             startIcon={<FaSearch />}
+//             disabled={!selectedState || !selectedCity || loading} // ✅ fix here
+//             sx={{
+//               height: "50px",
+//               width: "120px",
+//               backgroundColor: "var(--color-primary)",
+//             }}
+//           >
+//             Search
+//           </Button>
+//         </>
+//       )}
+//     </form>
+//   );
+// };
+
+// export default FormContainer;
