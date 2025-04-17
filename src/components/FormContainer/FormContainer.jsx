@@ -154,7 +154,7 @@ import styles from "./FormContainer.module.css";
 const FormContainer = ({ onSubmit, type = "input" }) => {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
-  const [Hospital, setHospital] = useState([]);
+  const [hospitals, setHospitals] = useState([]);
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [bookingId, setBookingId] = useState("");
@@ -176,7 +176,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
     if (selectedCity) {
       fetchData(
         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
-        setHospital
+        setHospitals
       );
     }
   }, [selectedCity]);
@@ -199,7 +199,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
       onSubmit({
         selectedState,
         selectedCity,
-        hospitals: Hospital,
+        hospitals: hospitals,
       });
     }
   };
