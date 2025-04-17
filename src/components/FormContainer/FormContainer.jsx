@@ -463,7 +463,7 @@
 
 // export default FormContainer;
 
-// -----4th time ---
+// ---------4th time --------------
 
 import React, { useState, useEffect } from "react";
 import {
@@ -491,8 +491,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
 
   useEffect(() => {
     if (selectedState) {
-      setCities([]); // Clear cities on state change
-      setSelectedCity(""); // Clear selected city
       fetchData(
         `https://meddata-backend.onrender.com/cities/${selectedState}`,
         setCities
@@ -501,18 +499,25 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
   }, [selectedState]);
 
   useEffect(() => {
+    let isMounted = true;
     if (selectedCity) {
-      setHospital([]);
       setLoading(true);
       fetchData(
         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
         (data) => {
-          setHospital(data);
-          setLoading(false);
+          if (isMounted) {
+            setHospital(data);
+            // Add small delay to allow DOM to settle
+            setTimeout(() => setLoading(false), 100);
+          }
         }
       );
     }
-  }, [selectedCity, selectedState]);
+
+    return () => {
+      isMounted = false;
+    };
+  }, [selectedCity]);
 
   const fetchData = async (endpoint, setter) => {
     try {
@@ -521,7 +526,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
       setter(data);
     } catch (err) {
       console.error("Fetch error:", err);
-      setLoading(false);
     }
   };
 
@@ -623,7 +627,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
               backgroundColor: "var(--color-primary)",
             }}
           >
-            {loading ? "Loading..." : "Search"}
+            Search
           </Button>
         </>
       )}
