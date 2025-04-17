@@ -30,9 +30,9 @@ const App = () => {
       console.log("Hosptial:", data.hospitals);
       setHospital(data.hospitals);
       // ✅ Redirect to FindDoctor page after setting hospitals
-      navigate("/FindDoctor");
+      // navigate("/FindDoctor");
     }
-
+    navigate("/FindDoctor");
     // console.log("mujhe Dabaya gaya hai");
   };
 
