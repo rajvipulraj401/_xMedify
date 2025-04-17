@@ -140,165 +140,6 @@
 // export default FormContainer;
 
 // // // --------------------------- (2nd time code*)---------------
-// import React, { useState, useEffect } from "react";
-// import {
-//   Select,
-//   MenuItem,
-//   FormControl,
-//   InputLabel,
-//   Button,
-// } from "@mui/material";
-// import { FaSearch } from "react-icons/fa";
-// import styles from "./FormContainer.module.css";
-
-// const FormContainer = ({ onSubmit, type = "input" }) => {
-//   const [states, setStates] = useState([]);
-//   const [cities, setCities] = useState([]);
-//   const [Hospital, setHospital] = useState([]);
-//   const [selectedState, setSelectedState] = useState("");
-//   const [selectedCity, setSelectedCity] = useState("");
-//   const [bookingId, setBookingId] = useState("");
-
-//   useEffect(() => {
-//     fetchData("https://meddata-backend.onrender.com/states", setStates);
-//   }, []);
-
-//   useEffect(() => {
-//     if (selectedState) {
-//       fetchData(
-//         `https://meddata-backend.onrender.com/cities/${selectedState}`,
-//         setCities
-//       );
-//     }
-//   }, [selectedState]);
-
-//   useEffect(() => {
-//     if (selectedCity) {
-//       fetchData(
-//         `https://meddata-backend.onrender.com/data?state=${selectedState}&city=${selectedCity}`,
-//         setHospital
-//       );
-//     }
-//   }, [selectedCity]);
-
-//   const fetchData = async (endpoint, setter) => {
-//     try {
-//       const res = await fetch(endpoint);
-//       const data = await res.json();
-//       setter(data);
-//     } catch (err) {
-//       console.error("Fetch error:", err);
-//     }
-//   };
-
-//   const handleSearch = (e) => {
-//     e.preventDefault();
-//     if (type === "input") {
-//       onSubmit({ bookingId });
-//     } else {
-//       onSubmit({
-//         selectedState,
-//         selectedCity,
-//         hospitals: Hospital,
-//       });
-//     }
-//   };
-
-//   return (
-//     <form className={styles.searchForm} onSubmit={handleSearch}>
-//       {type === "input" ? (
-//         <div
-//           style={{
-//             display: "flex",
-//             gap: "1rem",
-//             alignItems: "center",
-//             width: "100%",
-//           }}
-//         >
-//           <input
-//             type="text"
-//             name="hospital"
-//             className={styles.select}
-//             placeholder="Search By Hospital"
-//             value={bookingId}
-//             onChange={(e) => setBookingId(e.target.value)}
-//             required
-//             style={{
-//               flex: 1, // input will take most of the width
-//               minWidth: "0", // helps in flex shrinking properly
-//             }}
-//           />
-
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             startIcon={<FaSearch />}
-//             sx={{
-//               height: "50px",
-//               whiteSpace: "nowrap",
-//               backgroundColor: "var(--color-primary)",
-//               minWidth: "120px", // button will stay fixed width
-//             }}
-//           >
-//             Search
-//           </Button>
-//         </div>
-//       ) : (
-//         <>
-//           <FormControl sx={{ mb: 1, flex: 1 }} id="state">
-//             <InputLabel>Select State</InputLabel>
-//             <Select
-//               value={selectedState}
-//               onChange={(e) => setSelectedState(e.target.value)}
-//               required
-//               label="Select State"
-//             >
-//               {states.map((state) => (
-//                 <MenuItem key={state} value={state}>
-//                   {state}
-//                 </MenuItem>
-//               ))}
-//             </Select>
-//           </FormControl>
-
-//           <FormControl sx={{ mb: 1, flex: 1 }} id="city">
-//             <InputLabel>Select City</InputLabel>
-//             <Select
-//               value={selectedCity}
-//               onChange={(e) => setSelectedCity(e.target.value)}
-//               required
-//               label="Select City"
-//               disabled={!selectedState}
-//             >
-//               {cities.map((city) => (
-//                 <MenuItem key={city} value={city}>
-//                   {city}
-//                 </MenuItem>
-//               ))}
-//             </Select>
-//           </FormControl>
-
-//           <Button
-//             type="submit"
-//             variant="contained"
-//             startIcon={<FaSearch />}
-//             sx={{
-//               height: "50px",
-//               width: "120px",
-//               backgroundColor: "var(--color-primary)",
-//             }}
-//           >
-//             Search
-//           </Button>
-//         </>
-//       )}
-//     </form>
-//   );
-// };
-
-// export default FormContainer;
-
-// -----------3rd time------
 import React, { useState, useEffect } from "react";
 import {
   Select,
@@ -317,7 +158,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
   const [selectedState, setSelectedState] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [bookingId, setBookingId] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // ⬅️ added
 
   useEffect(() => {
     fetchData("https://meddata-backend.onrender.com/states", setStates);
@@ -351,21 +191,17 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
     }
   };
 
-  const handleSearch = async (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
-    setIsSubmitting(true); // ⬅️ added
-
     if (type === "input") {
-      await onSubmit({ bookingId });
+      onSubmit({ bookingId });
     } else {
-      await onSubmit({
+      onSubmit({
         selectedState,
         selectedCity,
         hospitals: Hospital,
       });
     }
-
-    setIsSubmitting(false); // ⬅️ added
   };
 
   return (
@@ -388,8 +224,8 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             onChange={(e) => setBookingId(e.target.value)}
             required
             style={{
-              flex: 1,
-              minWidth: "0",
+              flex: 1, // input will take most of the width
+              minWidth: "0", // helps in flex shrinking properly
             }}
           />
 
@@ -397,12 +233,11 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             type="submit"
             variant="contained"
             startIcon={<FaSearch />}
-            disabled={isSubmitting} // ⬅️ added
             sx={{
               height: "50px",
               whiteSpace: "nowrap",
               backgroundColor: "var(--color-primary)",
-              minWidth: "120px",
+              minWidth: "120px", // button will stay fixed width
             }}
           >
             Search
@@ -410,11 +245,9 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
         </div>
       ) : (
         <>
-          <FormControl sx={{ mb: 1, flex: 1 }}>
-            <InputLabel id="state-label">Select State</InputLabel>
+          <FormControl sx={{ mb: 1, flex: 1 }} id="state">
+            <InputLabel>Select State</InputLabel>
             <Select
-              id="state"
-              labelId="state-label"
               value={selectedState}
               onChange={(e) => setSelectedState(e.target.value)}
               required
@@ -428,11 +261,9 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             </Select>
           </FormControl>
 
-          <FormControl sx={{ mb: 1, flex: 1 }}>
-            <InputLabel id="city-label">Select City</InputLabel>
+          <FormControl sx={{ mb: 1, flex: 1 }} id="city">
+            <InputLabel>Select City</InputLabel>
             <Select
-              id="city"
-              labelId="city-label"
               value={selectedCity}
               onChange={(e) => setSelectedCity(e.target.value)}
               required
@@ -451,7 +282,6 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
             type="submit"
             variant="contained"
             startIcon={<FaSearch />}
-            disabled={isSubmitting} // ⬅️ added
             sx={{
               height: "50px",
               width: "120px",
@@ -467,3 +297,5 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
 };
 
 export default FormContainer;
+
+// -----------3rd time------
