@@ -26,21 +26,22 @@ const HospitalInfo = ({ hospitalData }) => {
               {/* NOw we get the hospital so as many hospital we loop and create that no of
                */}
 
-              {/* {hospitalData.map((hospital, index) => {
-                return (
-                  <BookingCard
-                    key={index}
-                    Name={hospital["Hospital Name"]}
-                    City={hospital.City}
-                    State={hospital.State}
-                    Rating={hospital["Hospital overall rating"]}
-                  ></BookingCard>
-                );
-              })} */}
+              {/* {hospitalData.map((hospital, index) => (
+                <BookingCard
+                  key={index}
+                  Name={hospital["Hospital Name"]}
+                  City={hospital.City}
+                  State={hospital.State}
+                  Rating={hospital["Hospital overall rating"]}
+                ></BookingCard>
+              ))} */}
+
+              {/* UPAR waala se kuch error aa rha hai islea ul me daale neeche ko */}
 
               <ul>
                 {hospitalData.map((hospital, index) => (
                   <BookingCard
+                    key={index}
                     Name={hospital["Hospital Name"]}
                     City={hospital.City}
                     State={hospital.State}

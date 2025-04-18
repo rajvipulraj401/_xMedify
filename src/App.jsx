@@ -16,18 +16,18 @@ const App = () => {
   const handleSearch = function (data) {
     //--- this is only getting the data this function
 
-    console.log(data);
+    // console.log(data);
 
     // step1 : if i receive the booking id in the object data received
 
     if (data.bookingId) {
       // Do something with bookingId
-      console.log("Booking ID:", data.bookingId);
+      // console.log("Booking ID:", data.bookingId);
     }
 
     // Step 2: if i get hospital data setHospital data and navigate to FindDoctor page
     else {
-      console.log("Hosptial:", data.hospitals);
+      // console.log("Hosptial:", data.hospitals);
       setHospital(data.hospitals);
       // ✅ Redirect to FindDoctor page after setting hospitals
       // navigate("/FindDoctor");

@@ -7,6 +7,7 @@ const Button = ({
   width,
   height,
   children,
+  handleBtnClick,
   "aria-label": label,
   /*  ❌❌❌🔇🔇🔇
    We are accepting the 'aria-label' prop and assigning it to the variable 'label'.
@@ -39,6 +40,7 @@ const Button = ({
         */
         style={btnStyles}
         aria-label={label}
+        onClick={handleBtnClick}
       >
         {children}
       </button>

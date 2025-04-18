@@ -54,19 +54,13 @@ import HospitalInfo from "../../components/HospitalInfo/HospitalInfo";
 import styles from "./FindDoctor.module.css";
 
 const FindDoctor = ({ onSubmit, hospitalData }) => {
-  // const handleLocationSearch = ({ selectedState, selectedCity }) => {
-  //   console.log("State:", selectedState);
-  //   console.log("City:", selectedCity);
-  //   // fetch hospitals etc.
-  // };
-
-  // Async data fetching if needed
-  useEffect(() => {
-    // For example, fetch hospital data after state and city are selected
-    if (hospitalData.length > 0) {
-      console.log("Hospital data fetched: ", hospitalData);
-    }
-  }, [hospitalData]); // Only trigger when `hospitalData` changes
+  // // Async data fetching if needed
+  // useEffect(() => {
+  //   // For example, fetch hospital data after state and city are selected
+  //   if (hospitalData.length > 0) {
+  //     // console.log("Hospital data fetched: ", hospitalData);
+  //   }
+  // }, [hospitalData]); // Only trigger when `hospitalData` changes
 
   return (
     <div className={styles.findDoctorPage}>

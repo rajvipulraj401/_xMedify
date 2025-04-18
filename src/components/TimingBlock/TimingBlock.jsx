@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./TimingBlock.module.css";
-const TimingBlock = ({ time }) => {
+const TimingBlock = ({ time, handleTimeClick, isSelected }) => {
   return (
     <>
-      <div className={styles.timeContainer}>{time}</div>
+      <div
+        onClick={(e) => {
+          // console.log("clicked btn");
+          //  handleTimeClick(event);
+          handleTimeClick(e);
+          // a state to handle the selected button
+        }}
+        // ---directly passsing the reference
+        // onClick={
+        //   handleTimeClick
+        // }
+
+        className={`${styles.timeContainer} ${
+          isSelected ? styles.selected : ""
+        }`}
+      >
+        {time}
+      </div>
     </>
   );
 };
