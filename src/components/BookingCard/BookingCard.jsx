@@ -147,8 +147,10 @@ const BookingCard = ({ Name, City, State, Rating }) => {
 
   const handleBtnClick = () => {
     setBtnToggler(!btnToggler);
-    console.log(btnToggler); // console.log here will give old value for latest
-    // value  use the useEffect hook and log inside it
+    // console.log(btnToggler);
+    /* console.log here will give old value for latest
+     value  use the useEffect hook and log inside it
+     */
   };
 
   const afternoon = ["12:00PM", "12:30PM", "01:30PM", "02:00PM", "02:30PM"];

@@ -163,29 +163,76 @@
 
 // ----------version 2 using pseudo element-----------
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { format, addDays } from "date-fns";
 
 const CarouselMUI = () => {
   const [value, setValue] = useState(0);
+  // step 1 : created an array of objects and store them in state
+  const [tabData, setTabData] = useState([
+    { date: "Today", slots: "10 Slots Available" },
+    { date: "Tomorrow", slots: "10 Slots Available" },
+    { date: "Day After", slots: "10 Slots Available" },
+    { date: "4th Day", slots: "10 Slots Available" },
+    { date: "5th Day", slots: "10 Slots Available" },
+    { date: "6th Day", slots: "10 Slots Available" },
+    { date: "7th Day", slots: " 10 Slots Available" },
+  ]);
+
+  // Step 2: -- use the useEffect hook so that whenever the component mounts then only the date are calculated after that it do not change
+
+  /* a- pass empty dep array to render only on mount
+
+      */
+  useEffect(() => {
+    const dateVal = getNext7DaysFormatted();
+    // step 3 -- i got all the dates from using date-fns in the right format.
+
+    setTabData((prev) => {
+      // step4 :- changing the state value using the setter function .
+
+      return prev.map((curr, i) => {
+        // step 4.1  (if the i index is more than 1 then only do somethig)
+
+        if (i > 1) {
+          return {
+            ...curr, // puri object ko copy karenge spread operator se
+            date: dateVal[i], // aur date property ko new date se update karenge
+
+            //  ye krega work poora spread kr lo aur date: prperty add karo aur exist krta hai toh change kro
+          };
+        }
+
+        return curr;
+      });
+    });
+  }, []);
+
+  // Step 3 ;-- returning date in needed format using date-fns
+  function getNext7DaysFormatted() {
+    const dates = [];
+    const today = new Date();
+
+    for (let i = 0; i < 7; i++) {
+      const nextDate = addDays(today, i);
+      const formattedDate = format(nextDate, "eee, d MMMM");
+      dates.push(formattedDate);
+    }
+    return dates;
+  }
+
+  // Step 3 ;-- returning date in needed format using plain js
+
+  // console.log(getNext7DaysFormatted());
 
   const handleDateClick = (index) => {
     // console.log(`Tab ${index} clicked`);
     setValue(index);
   };
-
-  const tabData = [
-    { date: "Today", slots: "10 Slots Available" },
-    { date: "Tomorrow", slots: "10 Slots Available" },
-    { date: "Day After", slots: "5 Slots Available" },
-    { date: "4th Day", slots: "2 Slots Available" },
-    { date: "5th Day", slots: "1 Slot Available" },
-    { date: "6th Day", slots: "8 Slots Available" },
-    { date: "7th Day", slots: "0 Slot Available" },
-  ];
 
   return (
     <Swiper
