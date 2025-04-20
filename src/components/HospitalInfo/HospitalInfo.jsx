@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HospitalInfo.module.css";
 import BookingCard from "../BookingCard/BookingCard";
 import AdCard from "../AdCard/AdCard";
-const HospitalInfo = ({ hospitalData }) => {
+const HospitalInfo = ({ hospitalData, handleDateClick, handleTimeClick }) => {
   return (
     <>
       <div className={styles.hospitalInfoContainer}>
@@ -46,6 +46,8 @@ const HospitalInfo = ({ hospitalData }) => {
                     City={hospital.City}
                     State={hospital.State}
                     Rating={hospital["Hospital overall rating"]}
+                    handleDateClick={handleDateClick}
+                    handleTime={handleTimeClick}
                   />
                 ))}
               </ul>

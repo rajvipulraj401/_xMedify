@@ -7,11 +7,14 @@ import Faq from "./components/Faq/Faq";
 import Footer from "./components/Footer/Footer";
 import Download from "./components/Download/Download";
 import MyBookings from "./pages/MyBookings/MyBookings";
+import Modal from "./components/Modal/Modal";
 
 const App = () => {
   const navigate = useNavigate();
   const [Hospital, setHospital] = useState([]);
   const [bookingId, setBookingId] = useState("");
+  const [timeVal, setTimeVal] = useState(null);
+  const [dateVal, setDateVal] = useState(null);
 
   const handleSearch = function (data) {
     //--- this is only getting the data this function
@@ -36,6 +39,18 @@ const App = () => {
     // console.log("mujhe Dabaya gaya hai");
   };
 
+  const handleDateClick = (currentDate) => {
+    console.log(currentDate);
+    setDateVal(currentDate);
+  };
+  const handleTimeClick = (currentTime) => {
+    console.log(currentTime);
+    setTimeVal(currentTime);
+  };
+
+  // NOWwe have all the data of booking time , booking id , booking date and hospital date
+
+  // ----
   return (
     <div className="AppContainer">
       {/* Home page */}
@@ -48,7 +63,12 @@ const App = () => {
         <Route
           path="/FindDoctor"
           element={
-            <FindDoctor onSubmit={handleSearch} hospitalData={Hospital} />
+            <FindDoctor
+              onSubmit={handleSearch}
+              hospitalData={Hospital}
+              handleDateClick={handleDateClick}
+              handleTimeClick={handleTimeClick}
+            />
           }
         ></Route>
         {/* booking page */}

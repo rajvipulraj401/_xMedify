@@ -53,7 +53,12 @@ import SearchContainer from "../../components/SearchContainer/SearchContainer";
 import HospitalInfo from "../../components/HospitalInfo/HospitalInfo";
 import styles from "./FindDoctor.module.css";
 
-const FindDoctor = ({ onSubmit, hospitalData }) => {
+const FindDoctor = ({
+  onSubmit,
+  hospitalData,
+  handleDateClick,
+  handleTimeClick,
+}) => {
   // // Async data fetching if needed
   // useEffect(() => {
   //   // For example, fetch hospital data after state and city are selected
@@ -73,7 +78,11 @@ const FindDoctor = ({ onSubmit, hospitalData }) => {
       {/*  2. Search by hospital name */}
       {/* <SearchContainer type="input" onSubmit={handleHospitalSearch} /> */}
 
-      <HospitalInfo hospitalData={hospitalData} />
+      <HospitalInfo
+        hospitalData={hospitalData}
+        handleDateClick={handleDateClick}
+        handleTimeClick={handleTimeClick}
+      />
     </div>
   );
 };

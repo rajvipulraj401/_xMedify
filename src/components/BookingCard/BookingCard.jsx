@@ -133,19 +133,27 @@ import Button from "../Button/Button";
 import TimingBlock from "../TimingBlock/TimingBlock";
 import CarouselMUI from "../CarouselMUI/CarouselMUI";
 
-const BookingCard = ({ Name, City, State, Rating }) => {
+const BookingCard = ({
+  Name,
+  City,
+  State,
+  Rating,
+  handleDateClick,
+  handleTime,
+}) => {
   const [timeVal, setTimeVal] = useState(null);
-  const [dateVal, setDateVal] = useState(null);
+  // const [dateVal, setDateVal] = useState(null);
   const [isSelected, setIsSelected] = useState(false); // state for button color
   const [btnToggler, setBtnToggler] = useState(false);
 
-  const handleDateClick = (currentDate) => {
-    // console.log(currentDate);
-    setDateVal(currentDate);
-  };
+  // const handleDateClick = (currentDate) => {
+  //   // console.log(currentDate);
+  //   setDateVal(currentDate);
+  // };
   const handleTimeClick = (e) => {
     // console.log(e.target.innerText);
     setTimeVal(e.target.innerText);
+    handleTime(e.target.innerText);
   };
 
   const handleBtnClick = () => {
@@ -160,68 +168,69 @@ const BookingCard = ({ Name, City, State, Rating }) => {
   const evening = ["06:00PM", "06:30PM", "07:00PM", "07:30PM"];
 
   return (
-    <section className={styles.cardContainer}>
-      <div className={styles.card}>
-        {/* Left: Image */}
-        <div className={styles.leftSection}>
-          <div className={styles.imageWrapper}>
-            <img
-              src={hospitalImg}
-              alt="hospital"
-              className={styles.hospitalImg}
-            />
-            <span className={styles.tick}>✔</span>
+    <>
+      <section className={styles.cardContainer}>
+        <div className={styles.card}>
+          {/* Left: Image */}
+          <div className={styles.leftSection}>
+            <div className={styles.imageWrapper}>
+              <img
+                src={hospitalImg}
+                alt="hospital"
+                className={styles.hospitalImg}
+              />
+              <span className={styles.tick}>✔</span>
+            </div>
           </div>
-        </div>
 
-        {/* Center: Hospital Info */}
-        <div className={styles.middleSection}>
-          <h3 className={styles.title}>{Name}</h3>
-          <p className={styles.location}>
-            <strong>
-              {City}, {State}
-            </strong>
-          </p>
-          <p className={styles.description}>
-            Smilessence Center for Advanced Dentistry + 1 more
-          </p>
-          <p className={styles.fee}>
-            <span className={styles.free}>FREE</span>
-            <span className={styles.strike}> ₹500</span> Consultation fee at
-            clinic
-          </p>
-          <div className={styles.rating}>
-            👍 <span>{Rating}</span>
+          {/* Center: Hospital Info */}
+          <div className={styles.middleSection}>
+            <h3 className={styles.title}>{Name}</h3>
+            <p className={styles.location}>
+              <strong>
+                {City}, {State}
+              </strong>
+            </p>
+            <p className={styles.description}>
+              Smilessence Center for Advanced Dentistry + 1 more
+            </p>
+            <p className={styles.fee}>
+              <span className={styles.free}>FREE</span>
+              <span className={styles.strike}> ₹500</span> Consultation fee at
+              clinic
+            </p>
+            <div className={styles.rating}>
+              👍 <span>{Rating}</span>
+            </div>
           </div>
-        </div>
 
-        {/* Right: Availability + Button */}
-        {/* <div className={styles.rightSection} > */}
-        <div
-          className={`${styles.rightSection} ${
-            btnToggler ? styles.rightSectionpad : ""
-          } `}
-        >
-          <p className={styles.available}>Available Today</p>
-          <Button
-            width="250px"
-            height="45px"
-            background="var(--color-primary)"
-            aria-label="Book Center"
-            handleBtnClick={handleBtnClick}
+          {/* Right: Availability + Button */}
+          {/* <div className={styles.rightSection} > */}
+          <div
+            className={`${styles.rightSection} ${
+              btnToggler ? styles.rightSectionpad : ""
+            } `}
           >
-            {!btnToggler ? "Book FREE Center Visit" : "Hide Booking Calendar"}
-          </Button>
+            <p className={styles.available}>Available Today</p>
+            <Button
+              width="250px"
+              height="45px"
+              background="var(--color-primary)"
+              aria-label="Book Center"
+              handleBtnClick={handleBtnClick}
+            >
+              {!btnToggler ? "Book FREE Center Visit" : "Hide Booking Calendar"}
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {/* ---------Below is booking Date selecter------- */}
-      <div
-        style={{ display: !btnToggler ? "none" : "" }}
-        className={styles.tabContainer}
-      >
-        <div className={styles.tabSwitchContainer}>
-          {/* <Box sx={{ width: "100%" }}>
+        {/* ---------Below is booking Date selecter------- */}
+        <div
+          style={{ display: !btnToggler ? "none" : "" }}
+          className={styles.tabContainer}
+        >
+          <div className={styles.tabSwitchContainer}>
+            {/* <Box sx={{ width: "100%" }}>
             <Tabs
               sx={{ width: "100%" }}
               value={value}
@@ -264,55 +273,56 @@ const BookingCard = ({ Name, City, State, Rating }) => {
             </Tabs>
           </Box> */}
 
-          {/* Time carousel and mui tabs */}
-          <CarouselMUI handleClick={handleDateClick}></CarouselMUI>
-          {/* Time carousel and mui tabs */}
-        </div>
-
-        {/* tHIS IS the grid layout of all the times and shifts */}
-        <div className={styles.tabContainerTiming}>
-          {/* Morning */}
-          <div className={styles.row1}>
-            <div> Morning</div>
-            <TimingBlock
-              time="11:30AM"
-              handleTimeClick={handleTimeClick}
-              isSelected={timeVal === "11:30AM"} // check kro ki kya ye clicked hai tab hi apply color style
-            ></TimingBlock>
+            {/* Time carousel and mui tabs */}
+            <CarouselMUI handleClick={handleDateClick}></CarouselMUI>
+            {/* Time carousel and mui tabs */}
           </div>
-          {/* Afternoon */}
-          <div className={styles.row1}>
-            <div>Afternooon</div>
-            {/* <TimingBlock time="12:00PM"></TimingBlock>
+
+          {/* tHIS IS the grid layout of all the times and shifts */}
+          <div className={styles.tabContainerTiming}>
+            {/* Morning */}
+            <div className={styles.row1}>
+              <div> Morning</div>
+              <TimingBlock
+                time="11:30AM"
+                handleTimeClick={handleTimeClick}
+                isSelected={timeVal === "11:30AM"} // check kro ki kya ye clicked hai tab hi apply color style
+              ></TimingBlock>
+            </div>
+            {/* Afternoon */}
+            <div className={styles.row1}>
+              <div>Afternooon</div>
+              {/* <TimingBlock time="12:00PM"></TimingBlock>
             <TimingBlock time="12:30PM"></TimingBlock>
             <TimingBlock time="01:30PM"></TimingBlock>
             <TimingBlock time="02:00PM"></TimingBlock>
             <TimingBlock time="02:30PM"></TimingBlock> */}
 
-            {afternoon.map((curr, i) => (
-              <TimingBlock
-                key={i}
-                time={curr}
-                handleTimeClick={handleTimeClick}
-                isSelected={timeVal === curr} // check kro ki kya ye clicked hai tab hi apply color style
-              ></TimingBlock>
-            ))}
-          </div>
-          {/* Evening */}
-          <div className={styles.row1}>
-            <div>Evening</div>
-            {evening.map((curr, i) => (
-              <TimingBlock
-                key={i}
-                time={curr}
-                handleTimeClick={handleTimeClick}
-                isSelected={timeVal === curr} // check kro ki kya ye clicked hai tab hi apply color style
-              ></TimingBlock>
-            ))}
+              {afternoon.map((curr, i) => (
+                <TimingBlock
+                  key={i}
+                  time={curr}
+                  handleTimeClick={handleTimeClick}
+                  isSelected={timeVal === curr} // check kro ki kya ye clicked hai tab hi apply color style
+                ></TimingBlock>
+              ))}
+            </div>
+            {/* Evening */}
+            <div className={styles.row1}>
+              <div>Evening</div>
+              {evening.map((curr, i) => (
+                <TimingBlock
+                  key={i}
+                  time={curr}
+                  handleTimeClick={handleTimeClick}
+                  isSelected={timeVal === curr} // check kro ki kya ye clicked hai tab hi apply color style
+                ></TimingBlock>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
