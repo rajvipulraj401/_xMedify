@@ -139,7 +139,10 @@ const BookingCard = ({ Name, City, State, Rating }) => {
   const [isSelected, setIsSelected] = useState(false); // state for button color
   const [btnToggler, setBtnToggler] = useState(false);
 
-  const handleDateClick = () => {};
+  const handleDateClick = (currentDate) => {
+    // console.log(currentDate);
+    setDateVal(currentDate);
+  };
   const handleTimeClick = (e) => {
     // console.log(e.target.innerText);
     setTimeVal(e.target.innerText);
@@ -262,7 +265,7 @@ const BookingCard = ({ Name, City, State, Rating }) => {
           </Box> */}
 
           {/* Time carousel and mui tabs */}
-          <CarouselMUI></CarouselMUI>
+          <CarouselMUI handleClick={handleDateClick}></CarouselMUI>
           {/* Time carousel and mui tabs */}
         </div>
 

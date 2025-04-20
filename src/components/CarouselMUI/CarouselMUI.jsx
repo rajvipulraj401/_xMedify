@@ -170,8 +170,9 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { format, addDays } from "date-fns";
 
-const CarouselMUI = () => {
-  const [value, setValue] = useState(0);
+const CarouselMUI = ({ handleClick }) => {
+  const [dateValInd, setDateValInd] = useState(0); // state for selecting the date
+  const [timeVal, setTimeVal] = useState(0); // state for selecting the time
   // step 1 : created an array of objects and store them in state
   const [tabData, setTabData] = useState([
     { date: "Today", slots: "10 Slots Available" },
@@ -222,6 +223,8 @@ const CarouselMUI = () => {
       const formattedDate = format(nextDate, "eee, d MMMM");
       dates.push(formattedDate);
     }
+
+    // console.log(dates);
     return dates;
   }
 
@@ -229,9 +232,38 @@ const CarouselMUI = () => {
 
   // console.log(getNext7DaysFormatted());
 
+  // --------
+
+  // STEP to conver a date with adding year in it
+
+  function formatDate(input) {
+    // input: "Sun, 20 April"
+    const currentYear = new Date().getFullYear(); // 2025 ya jo bhi current ho
+
+    // Remove weekday
+    const parts = input.split(", ")[1]; // "20 April"
+
+    // Add year
+    const formattedDate = `${parts} ${currentYear}`;
+
+    return formattedDate; // "20 April 2025"
+  }
+
   const handleDateClick = (index) => {
     // console.log(`Tab ${index} clicked`);
-    setValue(index);
+    setDateValInd(index);
+    // console.log(index);
+    const currenDate = getNext7DaysFormatted()[index];
+    // Step 1 get the clicked index date eg--(sun, 20 April)
+
+    // step 2 : now call the formatDate function and conver this date by adding year to it .
+
+    const formattedCurrentDate = formatDate(currenDate);
+    // console.log(formattedCurrentDate);
+
+    //step 3: pass it to the parent
+    handleClick(formattedCurrentDate);
+    // i want to pass the date to the parent (whether it is today or someday)
   };
 
   return (
@@ -265,7 +297,7 @@ const CarouselMUI = () => {
             <h4
               style={{
                 margin: 0,
-                fontWeight: value === index ? "bold" : "normal",
+                fontWeight: dateValInd === index ? "bold" : "normal",
                 color: "#000",
               }}
             >
@@ -290,7 +322,8 @@ const CarouselMUI = () => {
                 // transform: "translateX(-50%)", // Align the border to the center
                 width: "125%", // Make the border larger than the content (control the width here)
                 height: "3px", // Height of the border (control thickness)
-                backgroundColor: value === index ? "#1976d2" : "transparent", // Color of the border when selected
+                backgroundColor:
+                  dateValInd === index ? "#1976d2" : "transparent", // Color of the border when selected
               }}
             />
           </div>
