@@ -282,7 +282,9 @@ const BookingCard = ({
           <div className={styles.tabContainerTiming}>
             {/* Morning */}
             <div className={styles.row1}>
-              <div> Morning</div>
+              <div>
+                <p>Morning</p>
+              </div>
               <TimingBlock
                 time="11:30AM"
                 handleTimeClick={handleTimeClick}
@@ -291,7 +293,9 @@ const BookingCard = ({
             </div>
             {/* Afternoon */}
             <div className={styles.row1}>
-              <div>Afternooon</div>
+              <div>
+                <p>Afternooon</p>
+              </div>
               {/* <TimingBlock time="12:00PM"></TimingBlock>
             <TimingBlock time="12:30PM"></TimingBlock>
             <TimingBlock time="01:30PM"></TimingBlock>
@@ -309,7 +313,9 @@ const BookingCard = ({
             </div>
             {/* Evening */}
             <div className={styles.row1}>
-              <div>Evening</div>
+              <div>
+                <p>Evening</p>
+              </div>
               {evening.map((curr, i) => (
                 <TimingBlock
                   key={i}

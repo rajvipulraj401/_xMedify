@@ -301,7 +301,7 @@ const CarouselMUI = ({ handleClick }) => {
                 color: "#000",
               }}
             >
-              {tab.date}
+              <p>{tab.date}</p>
             </h4>
             <span>{tab.slots}</span>
 
