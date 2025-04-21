@@ -7,9 +7,9 @@ import { NavLink, useNavigate, Link } from "react-router"; // Import NavLink for
 const Navbar = () => {
   // const navigate = useNavigate(); // Initialize useNavigate
 
-  const handleBookingsClick = () => {
-    navigate("/my-bookings"); // Navigate to '/my-bookings' page on button click
-  };
+  // const handleBookingsClick = () => {
+  //   navigate("/my-bookings"); // Navigate to '/my-bookings' page on button click
+  // };
 
   return (
     <div className={styles.wrapper}>
@@ -119,27 +119,28 @@ const Navbar = () => {
           </li>
 
           {/* Button component for "My Bookings" */}
-          {/* <Button
+          <Button
             width="130px"
             height="50px"
             background="var(--color-primary)"
             aria-label="My Bookings"
           >
             My Bookings
-          </Button> */}
+          </Button>
 
           {/* Button component for "My Bookings" */}
-
+          {/* 
           <Link to="/my-bookings" style={{ all: "unset" }}>
             <Button
               width="130px"
               height="50px"
               background="var(--color-primary)"
               aria-label="My Bookings"
+              // handleBtnClick ={handleBookingsClick}
             >
               My Bookings
             </Button>
-          </Link>
+          </Link> */}
         </ul>
       </nav>
     </div>
