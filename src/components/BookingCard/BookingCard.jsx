@@ -294,7 +294,7 @@ const BookingCard = ({
             {/* Afternoon */}
             <div className={styles.row1}>
               <div>
-                <p>Afternooon</p>
+                <p>Afternoon</p>
               </div>
               {/* <TimingBlock time="12:00PM"></TimingBlock>
             <TimingBlock time="12:30PM"></TimingBlock>
