@@ -112,7 +112,7 @@ const Navbar = () => {
             </NavLink>
           </li>
 
-          {/* Button component for "My Bookings"
+          {/* Button component for "My Bookings" */}
           <Button
             width="130px"
             height="50px"
@@ -120,10 +120,10 @@ const Navbar = () => {
             aria-label="My Bookings"
           >
             My Bookings
-          </Button> */}
+          </Button>
 
           {/* Button component for "My Bookings" */}
-          <Button
+          {/* <Button
             width="130px"
             height="50px"
             background="var(--color-primary)"
@@ -135,7 +135,7 @@ const Navbar = () => {
             >
               My Bookings
             </NavLink>
-          </Button>
+          </Button> */}
         </ul>
       </nav>
     </div>
