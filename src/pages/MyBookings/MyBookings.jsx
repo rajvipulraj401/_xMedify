@@ -17,7 +17,7 @@ const MyBookings = ({ onSubmit }) => {
         width="500px"
         padding="20px"
       />
-      <HospitalInfo />
+      {/* <HospitalInfo /> */}
     </div>
   );
 };
