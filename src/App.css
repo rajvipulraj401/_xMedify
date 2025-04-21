@@ -10,6 +10,19 @@ body::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
 
+.modalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999; /* yahan z-index kaam karega */
+  background-color: rgba(0, 0, 0, 0.6); /*  make the background dim little bit*/
+}
+
 .AppContainer {
   width: 100%;
   /* Give width 100% always else overflow will occur */

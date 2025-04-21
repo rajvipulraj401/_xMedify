@@ -8,9 +8,13 @@ import Footer from "./components/Footer/Footer";
 import Download from "./components/Download/Download";
 import MyBookings from "./pages/MyBookings/MyBookings";
 import Modal from "./components/Modal/Modal";
+import { useSnackbar } from "notistack";
 
 const App = () => {
-  const navigate = useNavigate();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar(); // This function triggers the snackbar
+  // This useSnackbar hooks returns two properties inside the object one is a function to show a snackbar and other one is optional
+  // to close the snackBar
+  const navigate = useNavigate(); // hook to navigate to diff pagess
   const [Hospital, setHospital] = useState([]);
   const [bookingId, setBookingId] = useState("");
   const [timeVal, setTimeVal] = useState(null);
@@ -40,16 +44,28 @@ const App = () => {
   };
 
   const handleDateClick = (currentDate) => {
-    console.log(currentDate);
+    // console.log(currentDate);
     setDateVal(currentDate);
   };
   const handleTimeClick = (currentTime) => {
-    console.log(currentTime);
+    // console.log(currentTime);
     setTimeVal(currentTime);
   };
 
   // NOWwe have all the data of booking time , booking id , booking date and hospital date
 
+  // sTEP TO DO booking
+
+  /*
+  1. Now when the date and time are not null then show the modal 
+  2. After the confirm button is clicked add data in local storage to make data persist.
+  */
+  const handleCloseBooking = () => {
+    setDateVal(null);
+    setTimeVal(null);
+  };
+
+  const handleConfirmBooking = (email) => {};
   // ----
   return (
     <div className="AppContainer">
@@ -81,6 +97,15 @@ const App = () => {
       <Faq></Faq>
       <Download></Download>
       <Footer></Footer>
+      {/* Agr value selected hai tbhi modal dikhega */}
+      {dateVal && timeVal && (
+        <div className="modalContainer">
+          <Modal
+            onClose={handleCloseBooking}
+            onConfirm={handleConfirmBooking}
+          ></Modal>
+        </div>
+      )}
     </div>
   );
 };
