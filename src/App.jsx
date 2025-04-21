@@ -19,6 +19,7 @@ const App = () => {
   const [bookingId, setBookingId] = useState("");
   const [timeVal, setTimeVal] = useState(null);
   const [dateVal, setDateVal] = useState(null);
+  const [selectedHospitalIndex, setSelectedHospitalIndex] = useState(null); // to store the current booking hospital index
 
   const handleSearch = function (data) {
     //--- this is only getting the data this function
@@ -65,7 +66,49 @@ const App = () => {
     setTimeVal(null);
   };
 
-  const handleConfirmBooking = (email) => {};
+  // Function to get curr hospital indx
+  const handleHospitalSelect = (index) => {
+    // console.log(index);
+    setSelectedHospitalIndex(index);
+  };
+
+  // const handleConfirmBooking = (email) => {};
+
+  const handleConfirmBooking = (email) => {
+    // console.log(email);
+    enqueueSnackbar("Booking successful!", {
+      variant: "success", // green color
+    });
+
+    // Store the Date , email , time  all in the hospital data and make new object
+    // and store it in the local storage  and send it to booking page
+
+    // Step 1: Get existing bookings from localStorage
+    const existingBookings = JSON.parse(localStorage.getItem("bookings")) || [];
+
+    // Step 2: Create new booking object
+
+    // console.log("Hospital", Hospital);
+    // So we are getting array of objects toh mujhe chhunna hai wo index jiska hospitalName aaya hai
+
+    const newBooking = {
+      ...Hospital[selectedHospitalIndex], // add all hospital data
+
+      dateVal: dateVal,
+      timeVal: timeVal,
+      email: email,
+    };
+
+    // Step 3: Push new booking into the array
+    existingBookings.push(newBooking);
+
+    // Step 4: Save the updated array back to localStorage
+    localStorage.setItem("bookings", JSON.stringify(existingBookings));
+
+    // For closing the booking modal
+    setDateVal(null);
+    setTimeVal(null);
+  };
   // ----
   return (
     <div className="AppContainer">
