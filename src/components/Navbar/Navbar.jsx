@@ -113,29 +113,29 @@ const Navbar = () => {
           </li>
 
           {/* Button component for "My Bookings" */}
-          <Button
-            width="130px"
-            height="50px"
-            background="var(--color-primary)"
-            aria-label="My Bookings"
-          >
-            My Bookings
-          </Button>
-
-          {/* Button component for "My Bookings" */}
           {/* <Button
             width="130px"
             height="50px"
             background="var(--color-primary)"
             aria-label="My Bookings"
           >
-            <NavLink
-              to="/my-bookings"
-              style={{ textDecoration: "none", all: "unset" }}
+            My Bookings
+          </Button> */}
+
+          {/* Button component for "My Bookings" */}
+          <NavLink
+            to="/my-bookings"
+            style={{ textDecoration: "none", all: "unset" }}
+          >
+            <Button
+              width="130px"
+              height="50px"
+              background="var(--color-primary)"
+              aria-label="My Bookings"
             >
               My Bookings
-            </NavLink>
-          </Button> */}
+            </Button>
+          </NavLink>
         </ul>
       </nav>
     </div>
