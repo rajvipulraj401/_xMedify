@@ -2,9 +2,15 @@ import React, { useState } from "react";
 import styles from "./Navbar.module.css";
 import Logo from "../Logo/Logo";
 import Button from "../Button/Button";
-import { NavLink } from "react-router"; // Import NavLink for active link functionality
+import { NavLink, useNavigate } from "react-router"; // Import NavLink for active link functionality
 
 const Navbar = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleBookingsClick = () => {
+    navigate("/my-bookings"); // Navigate to '/my-bookings' page on button click
+  };
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.topStrip}>
@@ -123,19 +129,15 @@ const Navbar = () => {
           </Button> */}
 
           {/* Button component for "My Bookings" */}
-          <NavLink
-            to="/my-bookings"
-            style={{ textDecoration: "none", all: "unset" }}
+          <Button
+            width="130px"
+            height="50px"
+            background="var(--color-primary)"
+            aria-label="My Bookings"
+            handleBtnClick={handleBookingsClick} // Pass handleBookingsClick function
           >
-            <Button
-              width="130px"
-              height="50px"
-              background="var(--color-primary)"
-              aria-label="My Bookings"
-            >
-              My Bookings
-            </Button>
-          </NavLink>
+            My Bookings
+          </Button>
         </ul>
       </nav>
     </div>
