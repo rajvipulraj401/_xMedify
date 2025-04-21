@@ -127,6 +127,7 @@ const App = () => {
               hospitalData={Hospital}
               handleDateClick={handleDateClick}
               handleTimeClick={handleTimeClick}
+              handleHospitalSelect={handleHospitalSelect}
             />
           }
         ></Route>

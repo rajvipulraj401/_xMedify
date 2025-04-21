@@ -58,6 +58,8 @@ const FindDoctor = ({
   hospitalData,
   handleDateClick,
   handleTimeClick,
+  // this below prop is extra
+  handleHospitalSelect,
 }) => {
   // // Async data fetching if needed
   // useEffect(() => {
@@ -82,6 +84,7 @@ const FindDoctor = ({
         hospitalData={hospitalData}
         handleDateClick={handleDateClick}
         handleTimeClick={handleTimeClick}
+        handleHospitalSelect={handleHospitalSelect}
       />
     </div>
   );
