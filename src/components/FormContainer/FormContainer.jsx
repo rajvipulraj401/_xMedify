@@ -464,6 +464,7 @@ const FormContainer = ({ onSubmit, type = "input" }) => {
 
           <Button
             type="submit"
+            id="searchBtn"
             variant="contained"
             startIcon={<FaSearch />}
             sx={{
