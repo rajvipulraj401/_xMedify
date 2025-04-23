@@ -3,6 +3,7 @@ import styles from "./Button.module.css";
 
 const Button = ({
   background,
+  id,
   hoverBackground,
   width,
   height,
@@ -33,7 +34,7 @@ const Button = ({
     <>
       <button
         type="submit"
-        id="searchBtn"
+        id={id}
         className={styles.buttonContainer}
         /* GETTING bg color as props but not setting it here directly setting
          it in css file as a variable css and bs iska opacity ghata badha diye
